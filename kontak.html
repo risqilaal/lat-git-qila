@@ -3,337 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hubungi Kami - Toko Online Sekolah</title>
-    
-    <!-- CSS Internal -->
+    <title>Hubungi Kami - EduStore SMK 1</title>
     <style>
-        /* --- Reset & Base Styles --- */
+        /* --- RESET & BASIC STYLES --- */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f7f6;
+            background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
-        }
-
-        /* --- Header / Navbar --- */
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Main Layout --- */
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 2rem;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        /* --- Sidebar Informasi Kontak --- */
-        .contact-info {
-            background-color: #34495e;
-            color: #fff;
-            padding: 2.5rem 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            min-height: 100vh;
         }
 
-        .contact-info h2 {
+        /* --- NAVBAR --- */
+        nav {
+            background-color: #1e3a8a; /* Biru Gelap Khas Sekolah */
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #93c5fd;
+        }
+
+        /* --- HEADER KONTAK --- */
+        .contact-header {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.9));
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #e0e7ff;
+        }
+
+        /* --- UTAMA / KONTEN KONTAK --- */
+        .contact-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 5%;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        /* Card Informasi & Form */
+        .contact-info, .contact-form {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h2, .contact-form h2 {
+            color: #1e3a8a;
+            margin-bottom: 20px;
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f59e0b;
+            padding-bottom: 8px;
             display: inline-block;
         }
 
+        /* Item Informasi */
         .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item h3 {
+            font-size: 1.05rem;
+            color: #1e3a8a;
+            margin-bottom: 5px;
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            align-items: center;
+            gap: 8px;
         }
 
-        .info-icon {
-            font-size: 1.5rem;
-        }
-
-        .info-text h4 {
-            font-size: 1rem;
-            color: #bdc3c7;
-        }
-
-        .info-text p {
+        .info-item p {
+            color: #4b5563;
             font-size: 0.95rem;
+            padding-left: 26px;
         }
 
-        /* --- Form Area --- */
-        .contact-form-container {
-            padding: 2.5rem 2rem;
-        }
-
-        .contact-form-container h2 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-        }
-
+        /* Form Group */
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.4rem;
-            font-weight: 600;
-            color: #4a5568;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #374151;
             font-size: 0.9rem;
         }
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .form-group input, 
+        .form-group textarea {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #cbd5e0;
-            border-radius: 4px;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
             font-size: 0.95rem;
             outline: none;
-            transition: border-color 0.2s ease;
+            transition: border-color 0.3s;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
         }
 
-        .btn-submit {
-            width: 100%;
-            padding: 0.8rem;
-            background-color: #3498db;
-            color: #fff;
+        .btn-kirim {
+            background-color: #f59e0b; /* Warna Oranye Aksen */
+            color: white;
             border: none;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: 12px 25px;
             font-weight: bold;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            width: 100%;
+            font-size: 1rem;
+            transition: background 0.3s;
         }
 
-        .btn-submit:hover {
-            background-color: #2980b9;
+        .btn-kirim:hover {
+            background-color: #d97706;
         }
 
-        /* --- Status Alert Box --- */
-        .alert-box {
-            display: none;
-            padding: 1rem;
-            border-radius: 4px;
-            margin-bottom: 1.2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .alert-success {
-            background-color: #c6f6d5;
-            color: #22543d;
-            border: 1px solid #9ae6b4;
-        }
-
-        .alert-error {
-            background-color: #fed7d7;
-            color: #742a2a;
-            border: 1px solid #feb2b2;
-        }
-
-        /* --- Footer Sederhana --- */
+        /* --- FOOTER --- */
         footer {
+            background-color: #111827;
+            color: #9ca3af;
             text-align: center;
-            padding: 1.5rem;
-            color: #718096;
-            font-size: 0.85rem;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
         }
 
-        /* Responsive Layout untuk Layar HP */
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-            .contact-wrapper {
-                grid-template-columns: 1fr;
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .contact-container {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
-    <header>
-        <h1>Toko Karya Siswa RPL</h1>
-        <p>Layanan Bantuan & Hubungi Tim Pengembang</p>
-    </header>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">EduStore SMK 1</div>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="index.html#produk">Produk</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </nav>
 
-    <!-- Content Utama -->
-    <main class="container">
-        <div class="contact-wrapper">
+    <!-- HEADER KONTAK -->
+    <section class="contact-header">
+        <h1>Hubungi Koperasi Sekolah</h1>
+        <p>Ada pertanyaan seputar ketersediaan seragam atau pemesanan? Kami siap membantu Anda.</p>
+    </section>
+
+    <!-- KONTEN UTAMA KONTAK -->
+    <main class="contact-container">
+        
+        <!-- INFORMASI KONTAK -->
+        <div class="contact-info">
+            <h2>Informasi Pelayanan</h2>
             
-            <!-- Sidebar Informasi Kontak -->
-            <div class="contact-info">
-                <div>
-                    <h2>Informasi Kontak</h2>
-                    
-                    <div class="info-item">
-                        <span class="info-icon">📍</span>
-                        <div class="info-text">
-                            <h4>Alamat Sekolah</h4>
-                            <p>Jl. Pendidikan No. 45, Gedung Laboratorium RPL, Indonesia</p>
-                        </div>
-                    </div>
+            <div class="info-item">
+                <h3>📍 Lokasi Koperasi</h3>
+                <p>Gedung Koperasi Siswa Mandiri (Lantai 1), SMK Negeri 1, Indonesia</p>
+            </div>
 
-                    <div class="info-item">
-                        <span class="info-icon">📧</span>
-                        <div class="info-text">
-                            <h4>Email Resmiv</h4>
-                            <p>rpl.toko@sekolah.sch.id</p>
-                        </div>
-                    </div>
+            <div class="info-item">
+                <h3>📞 WhatsApp / Telepon</h3>
+                <p>0812-3456-7890 (Admin Koperasi)</p>
+            </div>
 
-                    <div class="info-item">
-                        <span class="info-icon">📞</span>
-                        <div class="info-text">
-                            <h4>Telepon / WhatsApp</h4>
-                            <p>+62 812-3456-7890</p>
-                        </div>
-                    </div>
+            <div class="info-item">
+                <h3>📧 Email Resmi</h3>
+                <p>koperasi@edustoresmk1.sch.id</p>
+            </div>
 
-                    <div class="info-item">
-                        <span class="info-icon">⏰</span>
-                        <div class="info-text">
-                            <h4>Jam Operasional</h4>
-                            <p>Senin - Jumat: 08.00 - 15.00 WIB</p>
-                        </div>
-                    </div>
+            <div class="info-item">
+                <h3>⏰ Jam Operasional</h3>
+                <p>Senin - Jumat: 07.00 - 15.30 WIB<br>(Buka saat jam istirahat sekolah)</p>
+            </div>
+        </div>
+
+        <!-- FORM KIRIM PESAN -->
+        <div class="contact-form">
+            <h2>Kirim Pesan</h2>
+            <form id="formPesan">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap / Kelas</label>
+                    <input type="text" id="nama" placeholder="Contoh: Ahmad (XI RPL 1)" required>
                 </div>
 
-                <p style="font-size: 0.8rem; color: #a0aec0;">&copy; 2026 Proyek Kreatif Siswa RPL</p>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email / No. WhatsApp</label>
+                    <input type="text" id="email" placeholder="Contoh: 08123456789" required>
+                </div>
 
-            <!-- Form Kontak -->
-            <div class="contact-form-container">
-                <h2>Kirim Pesan</h2>
-                
-                <!-- Kotak Pesan Feedback (JavaScript Output) -->
-                <div id="alertBox" class="alert-box"></div>
+                <div class="form-group">
+                    <label for="pesan">Pesan / Pertanyaan</label>
+                    <textarea id="pesan" rows="4" placeholder="Tuliskan pertanyaan Anda mengenai stok seragam, buku, dll..." required></textarea>
+                </div>
 
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="nama">Nama Lengkap *</label>
-                        <input type="text" id="nama" placeholder="Masukkan nama Anda">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Alamat Email *</label>
-                        <input type="email" id="email" placeholder="contoh@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subjek">Kategori Pesan</label>
-                        <select id="subjek">
-                            <option value="Tanya Produk">Pertanyaan Produk</option>
-                            <option value="Pemesanan Khusus">Pemesanan Khusus/Custom</option>
-                            <option value="Keluhan">Kendala & Keluhan</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pesan">Pesan Anda *</label>
-                        <textarea id="pesan" rows="5" placeholder="Tuliskan pesan atau pertanyaan Anda di sini..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Kirim Pesan SEKARANG</button>
-                </form>
-            </div>
-
+                <button type="submit" class="btn-kirim">Kirim Pesan</button>
+            </form>
         </div>
+
     </main>
 
+    <!-- FOOTER -->
     <footer>
-        <p>Dibuat untuk Praktik Pembelajaran Pengembangan Web & Git/GitHub SMK RPL</p>
+        <p>&copy; 2026 EduStore SMK 1. Dikelola oleh Koperasi Siswa Mandiri.</p>
+        <p>Hubungi Kami di WhatsApp: 0812-3456-7890</p>
     </footer>
 
-    <!-- JavaScript Internal -->
+    <!-- JAVASCRIPT UNTUK INTERAKSI -->
     <script>
-        const contactForm = document.getElementById('contactForm');
-        const alertBox = document.getElementById('alertBox');
-
-        contactForm.addEventListener('submit', function(event) {
-            // Mencegah halaman melakukan reload secara otomatis
-            event.preventDefault();
-
-            // Mengambil nilai dari input form
-            const nama = document.getElementById('nama').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const pesan = document.getElementById('pesan').value.trim();
-
-            // Validasi Sederhana dengan JavaScript
-            if (nama === '' || email === '' || pesan === '') {
-                showAlert('Harap isi semua kolom berlapang wajib (*)!', 'error');
-                return;
-            }
-
-            // Validasi Format Email Sederhana
-            if (!validateEmail(email)) {
-                showAlert('Format email yang Anda masukkan tidak valid!', 'error');
-                return;
-            }
-
-            // Simulasi Pengiriman Berhasil
-            showAlert('Terima kasih, ' + nama + '! Pesan Anda telah berhasil terkirim.', 'success');
-            
-            // Reset Form setelah berhasil dikirim
-            contactForm.reset();
+        document.getElementById('formPesan').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            alert('Terima kasih ' + nama + ', pesan Anda berhasil terkirim ke Koperasi Sekolah!');
+            this.reset();
         });
-
-        // Fungsi Menampilkan Notifikasi/Alert di Halaman
-        function showAlert(message, type) {
-            alertBox.textContent = message;
-            alertBox.style.display = 'block';
-
-            if (type === 'success') {
-                alertBox.className = 'alert-box alert-success';
-            } else {
-                alertBox.className = 'alert-box alert-error';
-            }
-        }
-
-        // Fungsi Helper Validasi Email
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
     </script>
+
 </body>
 </html>
