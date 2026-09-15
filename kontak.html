@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubungi Kami - Toko Online Sekolah</title>
+    
+    <!-- CSS Internal -->
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- Header / Navbar --- */
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Main Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* --- Sidebar Informasi Kontak --- */
+        .contact-info {
+            background-color: #34495e;
+            color: #fff;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+        }
+
+        .info-text h4 {
+            font-size: 1rem;
+            color: #bdc3c7;
+        }
+
+        .info-text p {
+            font-size: 0.95rem;
+        }
+
+        /* --- Form Area --- */
+        .contact-form-container {
+            padding: 2.5rem 2rem;
+        }
+
+        .contact-form-container h2 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #2980b9;
+        }
+
+        /* --- Status Alert Box --- */
+        .alert-box {
+            display: none;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .alert-success {
+            background-color: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+
+        .alert-error {
+            background-color: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #feb2b2;
+        }
+
+        /* --- Footer Sederhana --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #718096;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Layout untuk Layar HP */
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <h1>Toko Karya Siswa RPL</h1>
+        <p>Layanan Bantuan & Hubungi Tim Pengembang</p>
+    </header>
+
+    <!-- Content Utama -->
+    <main class="container">
+        <div class="contact-wrapper">
+            
+            <!-- Sidebar Informasi Kontak -->
+            <div class="contact-info">
+                <div>
+                    <h2>Informasi Kontak</h2>
+                    
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div class="info-text">
+                            <h4>Alamat Sekolah</h4>
+                            <p>Jl. Pendidikan No. 45, Gedung Laboratorium RPL, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div class="info-text">
+                            <h4>Email Resmiv</h4>
+                            <p>rpl.toko@sekolah.sch.id</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div class="info-text">
+                            <h4>Telepon / WhatsApp</h4>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">⏰</span>
+                        <div class="info-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08.00 - 15.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.8rem; color: #a0aec0;">&copy; 2026 Proyek Kreatif Siswa RPL</p>
+            </div>
+
+            <!-- Form Kontak -->
+            <div class="contact-form-container">
+                <h2>Kirim Pesan</h2>
+                
+                <!-- Kotak Pesan Feedback (JavaScript Output) -->
+                <div id="alertBox" class="alert-box"></div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap *</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama Anda">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Alamat Email *</label>
+                        <input type="email" id="email" placeholder="contoh@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjek">Kategori Pesan</label>
+                        <select id="subjek">
+                            <option value="Tanya Produk">Pertanyaan Produk</option>
+                            <option value="Pemesanan Khusus">Pemesanan Khusus/Custom</option>
+                            <option value="Keluhan">Kendala & Keluhan</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pesan">Pesan Anda *</label>
+                        <textarea id="pesan" rows="5" placeholder="Tuliskan pesan atau pertanyaan Anda di sini..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Kirim Pesan SEKARANG</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Dibuat untuk Praktik Pembelajaran Pengembangan Web & Git/GitHub SMK RPL</p>
+    </footer>
+
+    <!-- JavaScript Internal -->
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const alertBox = document.getElementById('alertBox');
+
+        contactForm.addEventListener('submit', function(event) {
+            // Mencegah halaman melakukan reload secara otomatis
+            event.preventDefault();
+
+            // Mengambil nilai dari input form
+            const nama = document.getElementById('nama').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const pesan = document.getElementById('pesan').value.trim();
+
+            // Validasi Sederhana dengan JavaScript
+            if (nama === '' || email === '' || pesan === '') {
+                showAlert('Harap isi semua kolom berlapang wajib (*)!', 'error');
+                return;
+            }
+
+            // Validasi Format Email Sederhana
+            if (!validateEmail(email)) {
+                showAlert('Format email yang Anda masukkan tidak valid!', 'error');
+                return;
+            }
+
+            // Simulasi Pengiriman Berhasil
+            showAlert('Terima kasih, ' + nama + '! Pesan Anda telah berhasil terkirim.', 'success');
+            
+            // Reset Form setelah berhasil dikirim
+            contactForm.reset();
+        });
+
+        // Fungsi Menampilkan Notifikasi/Alert di Halaman
+        function showAlert(message, type) {
+            alertBox.textContent = message;
+            alertBox.style.display = 'block';
+
+            if (type === 'success') {
+                alertBox.className = 'alert-box alert-success';
+            } else {
+                alertBox.className = 'alert-box alert-error';
+            }
+        }
+
+        // Fungsi Helper Validasi Email
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+    </script>
+</body>
+</html>
