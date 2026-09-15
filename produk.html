@@ -1,182 +1,483 @@
-```html
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Produk</title>
+    <title>Produk - EduStore SMK 1</title>
 
     <style>
+        /* --- RESET & BASIC STYLES --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f8f8f8;
+            background-color: #f8f9fa;
             color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        header {
-            background-color: #ff69b4;
+        /* --- NAVBAR --- */
+        nav {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #93c5fd;
+        }
+
+        /* --- HEADER PRODUK --- */
+        .product-header {
+            background: linear-gradient(
+                rgba(30, 58, 138, 0.95),
+                rgba(30, 58, 138, 0.95)
+            );
             color: white;
             text-align: center;
-            padding: 25px;
+            padding: 60px 20px;
         }
 
-        header h1 {
-            margin-bottom: 8px;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 30px auto;
-        }
-
-        .produk-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .produk {
-            background-color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .produk h3 {
+        .product-header h1 {
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
 
-        .harga {
-            color: #ff1493;
+        .product-header p {
+            font-size: 1.1rem;
+            color: #e0e7ff;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* --- KONTEN PRODUK --- */
+        .product-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            color: #1e3a8a;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        /* --- GRID PRODUK --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* --- CARD PRODUK --- */
+        .product-card {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.10);
+        }
+
+        /* --- GAMBAR PRODUK --- */
+        .product-image {
+            height: 180px;
+            background-color: #e0e7ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+        }
+
+        /* --- INFORMASI PRODUK --- */
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            color: #1e3a8a;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .product-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: #d97706;
+            font-size: 1.15rem;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
-        button {
-            border: none;
-            background-color: #ff69b4;
+        /* --- BUTTON --- */
+        .btn-beli {
+            width: 100%;
+            background-color: #f59e0b;
             color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
+            border: none;
+            padding: 11px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            font-weight: bold;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
-        button:hover {
-            background-color: #ff1493;
+        .btn-beli:hover {
+            background-color: #d97706;
         }
 
-        .keranjang {
+        /* --- KERANJANG --- */
+        .cart {
             background-color: white;
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .keranjang h2 {
+        .cart h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f59e0b;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        #cartList {
+            color: #4b5563;
             margin-bottom: 15px;
         }
 
-        #daftarKeranjang {
-            margin-bottom: 15px;
+        .cart-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .total {
-            font-size: 20px;
+            margin-top: 15px;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #ff1493;
+            color: #1e3a8a;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-header h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Produk Kami</h1>
-        <p>Silakan pilih produk yang kamu inginkan 💗</p>
-    </header>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">EduStore SMK 1</div>
 
-    <div class="container">
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </nav>
 
-        <div class="produk-container">
 
-            <div class="produk">
-                <h3>Kaos Pink</h3>
-                <p class="harga">Rp75.000</p>
-                <button onclick="tambahKeranjang('Kaos Pink', 75000)">
-                    Tambah ke Keranjang
-                </button>
+    <!-- HEADER PRODUK -->
+    <section class="product-header">
+        <h1>Produk Koperasi Sekolah</h1>
+        <p>
+            Temukan berbagai kebutuhan sekolah seperti seragam,
+            buku, alat tulis, dan perlengkapan lainnya.
+        </p>
+    </section>
+
+
+    <!-- KONTEN PRODUK -->
+    <main class="product-container">
+
+        <div class="section-title">
+            <h2>Daftar Produk</h2>
+            <p>Pilih produk yang kamu butuhkan</p>
+        </div>
+
+
+        <!-- GRID PRODUK -->
+        <div class="product-grid">
+
+            <!-- PRODUK 1 -->
+            <div class="product-card">
+                <div class="product-image">👕</div>
+
+                <div class="product-info">
+                    <h3>Seragam Sekolah</h3>
+                    <p>Seragam sekolah resmi SMK Negeri 1.</p>
+
+                    <div class="price">
+                        Rp150.000
+                    </div>
+
+                    <button
+                        class="btn-beli"
+                        onclick="tambahProduk('Seragam Sekolah', 150000)">
+                        Tambah ke Keranjang
+                    </button>
+                </div>
             </div>
 
-            <div class="produk">
-                <h3>Tas Mini</h3>
-                <p class="harga">Rp100.000</p>
-                <button onclick="tambahKeranjang('Tas Mini', 100000)">
-                    Tambah ke Keranjang
-                </button>
+
+            <!-- PRODUK 2 -->
+            <div class="product-card">
+                <div class="product-image">📚</div>
+
+                <div class="product-info">
+                    <h3>Buku Tulis</h3>
+                    <p>Buku tulis untuk kebutuhan belajar siswa.</p>
+
+                    <div class="price">
+                        Rp8.000
+                    </div>
+
+                    <button
+                        class="btn-beli"
+                        onclick="tambahProduk('Buku Tulis', 8000)">
+                        Tambah ke Keranjang
+                    </button>
+                </div>
             </div>
 
-            <div class="produk">
-                <h3>Sepatu Casual</h3>
-                <p class="harga">Rp250.000</p>
-                <button onclick="tambahKeranjang('Sepatu Casual', 250000)">
-                    Tambah ke Keranjang
-                </button>
+
+            <!-- PRODUK 3 -->
+            <div class="product-card">
+                <div class="product-image">✏️</div>
+
+                <div class="product-info">
+                    <h3>Paket Alat Tulis</h3>
+                    <p>Paket alat tulis untuk kebutuhan sekolah.</p>
+
+                    <div class="price">
+                        Rp25.000
+                    </div>
+
+                    <button
+                        class="btn-beli"
+                        onclick="tambahProduk('Paket Alat Tulis', 25000)">
+                        Tambah ke Keranjang
+                    </button>
+                </div>
             </div>
 
-            <div class="produk">
-                <h3>Topi Cute</h3>
-                <p class="harga">Rp50.000</p>
-                <button onclick="tambahKeranjang('Topi Cute', 50000)">
-                    Tambah ke Keranjang
-                </button>
+
+            <!-- PRODUK 4 -->
+            <div class="product-card">
+                <div class="product-image">🎒</div>
+
+                <div class="product-info">
+                    <h3>Tas Sekolah</h3>
+                    <p>Tas sekolah nyaman dan cocok untuk siswa.</p>
+
+                    <div class="price">
+                        Rp120.000
+                    </div>
+
+                    <button
+                        class="btn-beli"
+                        onclick="tambahProduk('Tas Sekolah', 120000)">
+                        Tambah ke Keranjang
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- PRODUK 5 -->
+            <div class="product-card">
+                <div class="product-image">👟</div>
+
+                <div class="product-info">
+                    <h3>Sepatu Sekolah</h3>
+                    <p>Sepatu sekolah untuk kegiatan sehari-hari.</p>
+
+                    <div class="price">
+                        Rp180.000
+                    </div>
+
+                    <button
+                        class="btn-beli"
+                        onclick="tambahProduk('Sepatu Sekolah', 180000)">
+                        Tambah ke Keranjang
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- PRODUK 6 -->
+            <div class="product-card">
+                <div class="product-image">🧦</div>
+
+                <div class="product-info">
+                    <h3>Kaos Kaki</h3>
+                    <p>Kaos kaki nyaman untuk digunakan ke sekolah.</p>
+
+                    <div class="price">
+                        Rp15.000
+                    </div>
+
+                    <button
+                        class="btn-beli"
+                        onclick="tambahProduk('Kaos Kaki', 15000)">
+                        Tambah ke Keranjang
+                    </button>
+                </div>
             </div>
 
         </div>
 
-        <div class="keranjang">
-            <h2>🛒 Keranjang</h2>
 
-            <div id="daftarKeranjang">
-                Belum ada produk.
+        <!-- KERANJANG -->
+        <div class="cart">
+
+            <h2>🛒 Keranjang Belanja</h2>
+
+            <div id="cartList">
+                Belum ada produk yang dipilih.
             </div>
 
-            <p class="total">
-                Total: Rp<span id="total">0</span>
-            </p>
+            <div class="total">
+                Total: Rp<span id="totalHarga">0</span>
+            </div>
+
         </div>
 
-    </div>
+    </main>
 
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 EduStore SMK 1. Dikelola oleh Koperasi Siswa Mandiri.</p>
+        <p>Hubungi Kami di WhatsApp: 0812-3456-7890</p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
     <script>
+
         let totalHarga = 0;
 
-        function tambahKeranjang(namaProduk, hargaProduk) {
+        function tambahProduk(namaProduk, hargaProduk) {
 
-            const daftar = document.getElementById("daftarKeranjang");
+            const cartList = document.getElementById("cartList");
 
-            if (daftar.innerHTML === "Belum ada produk.") {
-                daftar.innerHTML = "";
+            // Jika belum ada produk
+            if (cartList.innerHTML === "Belum ada produk yang dipilih.") {
+                cartList.innerHTML = "";
             }
 
-            const item = document.createElement("p");
-            item.textContent = namaProduk + " - Rp" + hargaProduk.toLocaleString("id-ID");
+            // Membuat item baru
+            const item = document.createElement("div");
 
-            daftar.appendChild(item);
+            item.classList.add("cart-item");
 
+            item.textContent =
+                namaProduk + " - Rp" +
+                hargaProduk.toLocaleString("id-ID");
+
+            cartList.appendChild(item);
+
+            // Menambahkan harga
             totalHarga += hargaProduk;
 
-            document.getElementById("total").textContent =
+            // Menampilkan total
+            document.getElementById("totalHarga").textContent =
                 totalHarga.toLocaleString("id-ID");
+
+            // Notifikasi
+            alert(namaProduk + " berhasil ditambahkan ke keranjang!");
         }
+
     </script>
 
 </body>
